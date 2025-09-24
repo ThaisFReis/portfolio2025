@@ -6,6 +6,13 @@
 .Trashes
 ehthumbs.db
 Thumbs.db
+.vscode
+.specify
+.gemini
+.cursor
+.claude
+.windsurfrules
+CLAUDE.md
 
 # Logs
 logs/
