@@ -9,6 +9,9 @@ Thumbs.db
 .vscode
 .specify
 .gemini
+.gemini/memory
+.gemini/scripts
+.gemini/templates
 .cursor
 .claude
 .windsurfrules
@@ -34,9 +37,9 @@ logs/
 *~
 
 # Project specific
-.specify/specs/
-.specify/templates/
-.specify/memory/
+specs/
+templates/
+memory/
 
 # Temporary files
 *.temp
