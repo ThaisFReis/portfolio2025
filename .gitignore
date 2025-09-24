@@ -12,6 +12,7 @@ Thumbs.db
 .cursor
 .claude
 .windsurfrules
+.gemini/commands
 CLAUDE.md
 
 # Logs
@@ -33,9 +34,9 @@ logs/
 *~
 
 # Project specific
-specs/
-templates/
-memory/
+.specify/specs/
+.specify/templates/
+.specify/memory/
 
 # Temporary files
 *.temp
