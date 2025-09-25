@@ -1,102 +1,65 @@
-import { useRef, useMemo, Suspense  } from 'react';
-import { useFrame, useLoader } from '@react-three/fiber';
-import { Group, Mesh, SkinnedMesh } from 'three';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
-import { useMouseTracking } from '../hooks/useMouseTracking';
+import { Suspense, useRef, useEffect, useState } from 'react';
+import { Canvas, useFrame } from '@react-three/fiber';
+import { OrbitControls, Stage } from '@react-three/drei';
+import { Group, Object3D, Bone } from 'three';
+import { MathUtils } from 'three';
+import { Model } from './Model'; // Seu componente Model.tsx
 
-// --- Componente que renderiza o modelo com os materiais corretos ---
-function WiredModel({ scene }: { scene: Group }) {
-  const meshes = useMemo(() => {
-    const meshArray: (Mesh | SkinnedMesh)[] = [];
-    scene.traverse((child) => {
-      if (child instanceof Mesh || child instanceof SkinnedMesh) {
-        meshArray.push(child);
-      }
-    });
-    return meshArray;
-  }, [scene]);
-
-  return (
-    <group>
-      {meshes.slice(0, 4).map((mesh) =>
-        mesh instanceof SkinnedMesh ? (
-          <skinnedMesh
-            key={mesh.uuid}
-            geometry={mesh.geometry}
-            skeleton={mesh.skeleton}
-            frustumCulled={true}
-          >
-            <meshBasicMaterial
-              color="#400761"
-              transparent
-              opacity={0.6}
-              wireframe={true}
-            />
-          </skinnedMesh>
-        ) : (
-          <mesh
-            key={mesh.uuid}
-            geometry={mesh.geometry}
-            frustumCulled={true}
-          >
-            <meshBasicMaterial
-              color="#03adad"
-              transparent
-              opacity={0.6}
-            />
-          </mesh>
-        )
-      )}
-    </group>
-  );
-}
-
-
-// --- Componente principal do Avatar ---
-function LoadedAvatar() {
-  const { scene } = useLoader(GLTFLoader, '/thais5.glb');
+// Novo componente que contém a lógica de interação
+function InteractiveAvatar() {
   const groupRef = useRef<Group>(null);
-  const headRef = useRef<Group>(null);
-  const mousePosition = useMouseTracking();
-  const baseRotationY = -Math.PI / 2;
+  const [headBone, setHeadBone] = useState<Bone | null>(null);
 
+  // Este useEffect executa uma vez e procura pelo osso da cabeça dentro do modelo
+  useEffect(() => {
+    if (groupRef.current) {
+      groupRef.current.traverse((object: Object3D) => {
+        // O nome 'cabeça' deve ser EXATAMENTE o mesmo do osso no seu rig
+        if (object instanceof Bone && object.name === 'cabeça') {
+          setHeadBone(object);
+        }
+      });
+    }
+  }, []);
+
+  // useFrame é executado a cada frame (60x por segundo)
   useFrame((state) => {
-    if (headRef.current && mousePosition.isTracking) {
-      const { rotation } = headRef.current;
-      const rotationLimit = Math.PI / 12;
-      const targetX = baseRotationY + (mousePosition.targetPosition.x * 0.2);
-      rotation.y += (targetX - rotation.y) * (mousePosition.interpolationSpeed * 0.7);
-      rotation.y = Math.max(baseRotationY - rotationLimit, Math.min(baseRotationY + rotationLimit, rotation.y));
+    // Se não encontramos o osso da cabeça, não fazemos nada
+    if (!headBone) return;
 
-      const targetY = mousePosition.targetPosition.y * 0.1;
-      rotation.x += (targetY - rotation.x) * (mousePosition.interpolationSpeed * 0.7);
-      rotation.x = Math.max(-rotationLimit, Math.min(rotationLimit, rotation.x));
-    }
+    // state.mouse contém a posição do mouse (x, y) de -1 a 1
+    const mouseX = state.mouse.x;
+    const mouseY = state.mouse.y;
 
-    if (state.clock.elapsedTime % 0.1 < 0.016 && groupRef.current) {
-      const floatY = Math.sin(state.clock.elapsedTime * 0.3) * 0.02;
-      groupRef.current.position.y = 0 + floatY;
-    }
+    // Calculamos a rotação desejada com um limite para não ficar estranho
+    // Math.PI / 6 = 30 graus. O movimento será de -30 a +30 graus.
+    const targetRotationY = mouseX * (Math.PI / 6);
+    const targetRotationX = -mouseY * (Math.PI / 6);
+
+    // Suavizamos o movimento usando lerp para um efeito mais natural
+    headBone.rotation.y = MathUtils.lerp(headBone.rotation.y, targetRotationY, 0.1);
+    headBone.rotation.x = MathUtils.lerp(headBone.rotation.x, targetRotationX, 0.1);
   });
 
   return (
     <group ref={groupRef}>
-      <group
-        scale={[2.2, 2.2, 2.2]}
-        position={[0, 0, 0]}
-        rotation={[0, baseRotationY, 0]}
-        ref={headRef}
-      >
-        <WiredModel scene={scene} />
-      </group>
+      <Model />
     </group>
   );
 }
 
-export default function Avatar() {
+// Seu componente Avatar agora usa o InteractiveAvatar
+export function Avatar() {
   return (
-    <Suspense fallback={null}>
-      <LoadedAvatar />
-    </Suspense>
+    <div style={{ width: '100vw', height: '100vh' }}>
+      <Canvas camera={{ fov: 45, position: [0, 0, 20] }}>
+        <Suspense fallback={null}>
+        <Stage environment="city" intensity={0.6}>
+            <InteractiveAvatar />
+          </Stage>
+        </Suspense>
+        <OrbitControls enableZoom={false} enablePan={false} enableRotate={false} />
+      </Canvas>
+    </div>
   );
 }

@@ -49,3 +49,5 @@ memory/
 *.zip
 *.tar.gz
 *.rar
+.vercel
+.env*.local
