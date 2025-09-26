@@ -51,3 +51,8 @@ memory/
 *.rar
 .vercel
 .env*.local
+
+# Large asset files
+*.glb
+*.gltf
+*.fbx
