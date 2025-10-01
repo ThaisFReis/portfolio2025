@@ -2,6 +2,30 @@ import type { ProjectData } from "../types/chat";
 
 export const projects: ProjectData[] = [
   {
+    id: "eventhorizon",
+    title: "Event Horizon",
+    description: "A decentralized concert ticket marketplace built on blockchain technology. EventHorizon revolutionizes event ticketing by minting tickets as ERC721 NFTs, ensuring verifiable ownership, eliminating fraud, and enabling secure peer-to-peer transfers. Features include MetaMask wallet integration, multi-tier ticket systems, interactive venue seat selection, and a comprehensive user dashboard for managing NFT tickets.",
+    image: "/eventhorizon.png",
+    technologies: [
+      "React",
+      "Vite",
+      "Tailwind CSS",
+      "Solidity",
+      "Hardhat",
+      "Ethers.js",
+      "OpenZeppelin",
+      "ERC721",
+      "MetaMask",
+      "Blockchain",
+      "NFTs",
+      "Smart Contracts",
+      "Web3",
+      "Vitest",
+      "React Testing Library"
+    ],
+    link: "https://tickets-jue9.vercel.app/"
+  },
+  {
     id: "jaspr",
     title: "Jaspr",
     description: "AI-powered chatbot that won 1st place at Morro Makers Hackathon. Advanced conversational AI with natural language processing capabilities.",
