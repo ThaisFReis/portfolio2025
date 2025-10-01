@@ -1,12 +1,12 @@
 # 🚀 AI Avatar Portfolio - Cyberpunk Neural Interface
 
-An interactive portfolio website featuring a wireframe AI avatar with eye tracking, starfield background, and an integrated chatbot powered by Google Gemini AI.
+An interactive portfolio website featuring a wireframe AI avatar with eye tracking, starfield background, and an integrated chatbot powered by DeepSeek AI.
 
 ## ✨ Features
 
 - 🌌 **Deep Space Starfield** with twinkling stars and floating particles
 - 🤖 **3D Avatar Model** with realistic wireframe overlay and mouse tracking
-- 💬 **AI Chatbot** (T.H.A.I.S.) powered by Google Gemini with cyberpunk personality
+- 💬 **AI Chatbot** (Nyx) powered by DeepSeek with cyberpunk personality
 - 🎨 **Authentic 90s Cyberpunk Aesthetic** with terminal styling and neon effects
 - 🎯 **Advanced Post-Processing** with bloom, scanlines, and glitch effects
 - 📱 **Responsive Design** that works across different screen sizes
@@ -17,7 +17,7 @@ An interactive portfolio website featuring a wireframe AI avatar with eye tracki
 - **Frontend**: React 19, TypeScript, Vite, Tailwind CSS
 - **3D Graphics**: Three.js, React Three Fiber
 - **Icons**: Lucide React
-- **AI Integration**: Google Gemini API
+- **AI Integration**: DeepSeek API
 - **Styling**: CSS3 with custom cyberpunk animations
 
 ## 🚀 Quick Start
@@ -26,7 +26,7 @@ An interactive portfolio website featuring a wireframe AI avatar with eye tracki
 
 - Node.js 18+
 - npm, yarn, or pnpm
-- Google Gemini API key ([Get one here](https://makersuite.google.com/app/apikey))
+- DeepSeek API key ([Get one here](https://platform.deepseek.com/))
 
 ### Setup
 
@@ -46,9 +46,9 @@ An interactive portfolio website featuring a wireframe AI avatar with eye tracki
    ```bash
    cp .env.example .env
    ```
-   Add your Gemini API key to `.env`:
+   Add your DeepSeek API key to `.env`:
    ```
-   VITE_GEMINI_API_KEY=your_actual_api_key_here
+   VITE_DEEPSEEK_API_KEY=your_actual_api_key_here
    ```
 
 4. **Start the development server**
@@ -63,14 +63,14 @@ An interactive portfolio website featuring a wireframe AI avatar with eye tracki
 
 - **Move your mouse** around the screen to see the 3D avatar track your movement
 - **Click sidebar icons** to trigger different system messages
-- **Click the chat button** (bottom right) to open the T.H.A.I.S. terminal
+- **Click the chat button** (bottom right) to open the Nyx terminal
 - **Type questions** about Thais's portfolio, skills, and experience
-- **Watch the typewriter effect** as T.H.A.I.S. responds with cyberpunk flair
+- **Watch the typewriter effect** as Nyx responds with cyberpunk flair
 - **Enjoy the visual effects** including wireframe overlays, scanning lines, and targeting reticles
 
-## 🤖 T.H.A.I.S. Chatbot
+## 🤖 Nyx Chatbot
 
-T.H.A.I.S. (Terminal Heurístico de Assistência Interativa e Sistêmica) is an AI assistant with:
+Nyx (the primordial Greek goddess of the night) is an AI assistant with:
 
 - **Cyberpunk personality** with 90s hacker slang
 - **Portfolio knowledge** about Thais Ferreira Reis's experience
@@ -130,12 +130,12 @@ npm run preview
 
 | Variable | Description | Required |
 |----------|-------------|----------|
-| `VITE_GEMINI_API_KEY` | Google Gemini API key for chatbot | Yes |
+| `VITE_DEEPSEEK_API_KEY` | DeepSeek API key for chatbot | Yes |
 
 ## 🚨 Important Notes
 
-- The chatbot requires a valid Gemini API key to function
-- API key usage may incur costs based on Google's pricing
+- The chatbot requires a valid DeepSeek API key to function
+- API key usage may incur costs based on DeepSeek's pricing
 - The avatar eye tracking works best on desktop/laptop devices
 - For production deployment, ensure proper API key security
 

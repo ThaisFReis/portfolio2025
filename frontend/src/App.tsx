@@ -6,7 +6,7 @@ function App() {
   return (
     <>
       {/* Main Viewport */}
-      <div className="main-viewport">
+      {/*<div className="main-viewport">
         <Avatar />
       </div>
 

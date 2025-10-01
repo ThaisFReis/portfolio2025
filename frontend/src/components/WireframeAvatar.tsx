@@ -24,13 +24,14 @@ export const WireframeAvatar = () => {
     );
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
 
-    // Geometria e material
-    const geometry = new THREE.SphereGeometry(1, 20, 15);
+    // Geometria e material - optimized for performance
+    const geometry = new THREE.SphereGeometry(2, 12, 10);
     const material = new THREE.MeshBasicMaterial({
       color: "#22d3ee",
       wireframe: true,
       transparent: true,
       opacity: 0.4,
+      depthWrite: false,
     });
     const head = new THREE.Mesh(geometry, material);
 
@@ -39,12 +40,12 @@ export const WireframeAvatar = () => {
     const mouse = { x: 0, y: 0 };
     const containerHalf = { x: containerWidth / 2, y: containerHeight / 2 };
 
-    // Camera
-    camera.position.z = 2.5;
+    // Camera - adjusted for smaller sphere
+    camera.position.z = 5;
 
-    // Renderer
+    // Renderer - optimized pixel ratio for performance
     renderer.setSize(containerWidth, containerHeight);
-    renderer.setPixelRatio(window.devicePixelRatio);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
     // Adiciona o canvas ao container
     container.appendChild(renderer.domElement);
@@ -64,10 +65,18 @@ export const WireframeAvatar = () => {
       renderer.setSize(newWidth, newHeight);
     };
 
+    // Throttled mouse movement with requestAnimationFrame
+    let mouseMoveScheduled = false;
     const onDocumentMouseMove = (event: MouseEvent) => {
-      const rect = container.getBoundingClientRect();
-      mouse.x = ((event.clientX - rect.left) - containerHalf.x) / containerHalf.x;
-      mouse.y = ((event.clientY - rect.top) - containerHalf.y) / containerHalf.y;
+      if (mouseMoveScheduled) return;
+
+      mouseMoveScheduled = true;
+      requestAnimationFrame(() => {
+        const rect = container.getBoundingClientRect();
+        mouse.x = ((event.clientX - rect.left) - containerHalf.x) / containerHalf.x;
+        mouse.y = ((event.clientY - rect.top) - containerHalf.y) / containerHalf.y;
+        mouseMoveScheduled = false;
+      });
     };
 
     // Event Listeners
@@ -79,13 +88,13 @@ export const WireframeAvatar = () => {
     const animate = () => {
       animationFrameId = requestAnimationFrame(animate);
 
-      // Mapeia a posição do mouse para a rotação alvo
-      targetRotation.y = mouse.x * 0.8;
-      targetRotation.x = mouse.y * 0.8;
+      // Mapeia a posição do mouse para a rotação alvo - reduced sensitivity
+      targetRotation.y = mouse.x * 0.5;
+      targetRotation.x = mouse.y * 0.5;
 
-      // Interpola suavemente a rotação atual para a rotação alvo (easing)
-      head.rotation.y += (targetRotation.y - head.rotation.y) * 0.05;
-      head.rotation.x += (targetRotation.x - head.rotation.x) * 0.05;
+      // Interpola suavemente a rotação atual para a rotação alvo (easing) - faster settling
+      head.rotation.y += (targetRotation.y - head.rotation.y) * 0.08;
+      head.rotation.x += (targetRotation.x - head.rotation.x) * 0.08;
 
       renderer.render(scene, camera);
     };
@@ -123,7 +132,7 @@ export const WireframeAvatar = () => {
       ref={mountRef}
       style={{
         width: '100%',
-        height: '400px',
+        height: '100vh',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center'

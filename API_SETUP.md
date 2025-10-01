@@ -2,8 +2,10 @@
 
 ## Quick Setup
 
-1. **Get your Gemini API key**:
-   - Go to [Google AI Studio](https://makersuite.google.com/app/apikey)
+1. **Get your DeepSeek API key**:
+   - Go to [DeepSeek Platform](https://platform.deepseek.com/)
+   - Sign up or log in
+   - Navigate to API Keys section
    - Click "Create API Key"
    - Copy the generated key
 
@@ -15,7 +17,7 @@
 
 3. **Add your API key** to `.env`:
    ```
-   VITE_GEMINI_API_KEY=your_actual_api_key_here
+   VITE_DEEPSEEK_API_KEY=your_actual_api_key_here
    ```
 
 4. **Restart the development server**:
@@ -47,7 +49,7 @@
 ### ❌ "MAINFRAME SOBRECARREGADO: Muitas consultas"
 **Solution:**
 - Wait a few minutes before trying again
-- You've hit the rate limit for the Gemini API
+- You've hit the rate limit for the DeepSeek API
 - Consider upgrading your API plan if this happens frequently
 
 ### ❌ "ERRO DE REDE: Impossível conectar ao mainframe"
@@ -69,11 +71,10 @@ The fallback system includes responses for:
 
 ## API Costs
 
-The Gemini API has a generous free tier:
-- Free tier: 15 requests per minute
-- Paid tier: Higher rate limits and more features
-
-Check [Google AI pricing](https://ai.google.dev/pricing) for current rates.
+The DeepSeek API pricing:
+- Competitive pricing for chat completions
+- Pay-as-you-go model
+- Check [DeepSeek Platform](https://platform.deepseek.com/) for current rates and free credits
 
 ## Security Notes
 
@@ -95,8 +96,17 @@ Try these example queries:
 
 If you're still having issues:
 1. Check the browser console for detailed error messages
-2. Verify your API key is valid in Google AI Studio
-3. Test the API directly using curl or Postman
+2. Verify your API key is valid in DeepSeek Platform
+3. Test the API directly using curl or Postman:
+   ```bash
+   curl https://api.deepseek.com/v1/chat/completions \
+     -H "Content-Type: application/json" \
+     -H "Authorization: Bearer YOUR_API_KEY" \
+     -d '{
+       "model": "deepseek-chat",
+       "messages": [{"role": "user", "content": "Hello"}]
+     }'
+   ```
 4. Open an issue in the repository
 
 ---
