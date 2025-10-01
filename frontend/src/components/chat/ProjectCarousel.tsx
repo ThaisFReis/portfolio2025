@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { ChevronLeft, ChevronRight, ExternalLink, Github } from "lucide-react";
 import type { ProjectData } from "../../types/chat";
 
@@ -10,6 +10,8 @@ export const ProjectCarousel: React.FC<ProjectCarouselProps> = ({
   projects,
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const touchStartX = useRef<number>(0);
+  const touchEndX = useRef<number>(0);
 
   const nextProject = () => {
     setCurrentIndex((prev) => (prev + 1) % projects.length);
@@ -17,6 +19,34 @@ export const ProjectCarousel: React.FC<ProjectCarouselProps> = ({
 
   const prevProject = () => {
     setCurrentIndex((prev) => (prev - 1 + projects.length) % projects.length);
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStartX.current || !touchEndX.current) return;
+
+    const distance = touchStartX.current - touchEndX.current;
+    const minSwipeDistance = 50;
+
+    if (Math.abs(distance) > minSwipeDistance) {
+      if (distance > 0) {
+        // Swiped left - next project
+        nextProject();
+      } else {
+        // Swiped right - previous project
+        prevProject();
+      }
+    }
+
+    touchStartX.current = 0;
+    touchEndX.current = 0;
   };
 
   const currentProject = projects[currentIndex];
@@ -34,7 +64,12 @@ export const ProjectCarousel: React.FC<ProjectCarouselProps> = ({
       </div>
 
       {/* Main Carousel Card */}
-      <div className="relative bg-black/40 backdrop-blur-sm border border-purple-500/30 rounded-lg overflow-hidden shadow-xl shadow-purple-900/20">
+      <div
+        className="relative bg-black/40 backdrop-blur-sm border border-purple-500/30 rounded-lg overflow-hidden shadow-xl shadow-purple-900/20"
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      >
         {/* Project Image */}
         <div className="relative h-48 overflow-hidden bg-gradient-to-br from-purple-900/20 to-black">
           <img
