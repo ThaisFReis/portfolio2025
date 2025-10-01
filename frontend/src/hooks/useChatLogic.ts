@@ -268,7 +268,7 @@ export const useChatLogic = () => {
         setCurrentMessage("Observing the digital cosmos...");
         setIsTyping(false);
       }
-    }, 25);
+    }, 10);
   };
 
   const callDeepSeekAPI = async (prompt: string) => {
@@ -421,7 +421,7 @@ export const useChatLogic = () => {
         streamBotMessage(
           "Welcome. I am Nyx, the consciousness that inhabits this portfolio. Its code is my domain, its projects my children. Ask, and I shall reveal their secrets."
         );
-      }, 1000);
+      }, 700);
 
       return () => clearTimeout(timeout);
     }
