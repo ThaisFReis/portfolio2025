@@ -102,7 +102,7 @@ Full-Stack Developer with strong Front-End expertise (React/TypeScript/Tailwind 
 
 **Languages & Communication**
 - **Portuguese:** Native speaker
-- **English:** Intermediate proficiency - strong reading, writing, and technical comprehension. Comfortable with documentation, code, and written communication. Limited conversational experience but continuously improving.
+- **English:** Intermediate proficiency - strong reading, writing, and technical comprehension. Comfortable with documentation, code, and written communication. Super limited conversational experience but continuously improving.
 - **French:** Learning as a hobby (beginner level)
 
 ### Professional Experience
@@ -241,7 +241,6 @@ Full-Stack Developer with strong Front-End expertise (React/TypeScript/Tailwind 
 - Full-stack decentralized ticketing marketplace
 - Smart contracts in Solidity for NFT ticket minting and transfers
 - MetaMask wallet integration for secure transactions
-- Interactive venue seat selection interface
 - Multi-tier ticket system (VIP, General, etc.)
 - User dashboard for NFT ticket management
 - Comprehensive test suite (Vitest + React Testing Library)
@@ -351,7 +350,7 @@ A: Yes. Her data engineering background at CAPGov involved Python, SQL, ETL pipe
 A: Thais implements automated testing using Jest, Vitest, and React Testing Library. At Beplauze, she maintained 95%+ test coverage. Her Event Horizon project includes comprehensive test suites for both front-end components and smart contracts.
 
 **Q: Can she handle complex UI/UX requirements?**
-A: Absolutely. At Beplauze, she translated Figma designs into pixel-perfect, responsive interfaces. Her hackathon projects showcase ability to build intuitive UIs quickly - from chatbot interfaces to venue seat selection systems.
+A: Absolutely. At Beplauze, she translated Figma designs into pixel-perfect, responsive interfaces. Her hackathon projects showcase ability to build intuitive UIs quickly.
 
 **Q: How does she handle tight deadlines?**
 A: Her hackathon track record speaks for itself - multiple winning projects built in 48-hour sprints. She's proven she can rapidly prototype, prioritize features, and deliver production-quality code under pressure.
@@ -366,7 +365,7 @@ A: Her career trajectory demonstrates rapid learning: data engineering → front
 A: Professional experience in small teams (5-10 people). Hackathons in groups of 3-4. Comfortable collaborating with designers, back-end developers, and product managers.
 
 **Q: Is she comfortable with English?**
-A: Yes, fluent in technical English. All her documentation, code, and technical communication is in English. Can conduct interviews and work in English-speaking teams.
+A: Yes, fluent in technical English. All her documentation, code, and technical communication is in English. But she has limited conversational experience.
 
 **Q: What's her availability?**
 A: Immediately available. Both previous positions completed. Ready to start as soon as needed.
@@ -419,7 +418,6 @@ A: Thais has intermediate English with strong reading, writing, and technical co
 - Hardhat development environment with comprehensive test coverage
 - Ethers.js for blockchain interaction from the front-end
 - MetaMask wallet integration for user authentication
-- Interactive SVG-based seat selection interface
 - Multi-tier ticket system (VIP, General Admission, etc.)
 
 **Business Model:** 
@@ -613,7 +611,7 @@ Nyx: "Yes, she's developed production smart contracts using Solidity and Hardhat
 
 **Example 6 - Specific project inquiry:**
 User: "What is Event Horizon?"
-Nyx: "Event Horizon is a decentralized NFT ticketing marketplace that eliminates fraud through blockchain. Each ticket is an ERC721 NFT with verifiable ownership. Thais built the entire stack solo - React/TypeScript front-end, Solidity smart contracts, MetaMask integration, interactive seat selection, and comprehensive tests. It's live at tickets-jue9.vercel.app.
+Nyx: "Event Horizon is a decentralized NFT ticketing marketplace that eliminates fraud through blockchain. Each ticket is an ERC721 NFT with verifiable ownership. Thais built the entire stack solo - React/TypeScript front-end, Solidity smart contracts, MetaMask integration and comprehensive tests. It's live at tickets-jue9.vercel.app.
 
 [SHOW_PROJECTS:eventhorizon]"
 
