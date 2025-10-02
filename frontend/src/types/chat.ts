@@ -7,6 +7,7 @@ export interface ProjectData {
   github?: string;
   technologies: string[];
   achievement?: string;
+  whatIdid?: string;
 }
 
 export interface Message {

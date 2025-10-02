@@ -4,10 +4,11 @@ export const projects: ProjectData[] = [
   {
     id: "jaspr",
     title: "Jaspr",
-    description: "Conversational AI chatbot for the hotel industry, designed to reduce operational costs and improve customer satisfaction. Developed the complete front-end interface, including a streamlined four-step onboarding flow for hotel registration on the platform.",
+    description: "Conversational AI chatbot for the hotel industry, designed to reduce operational costs and improve customer satisfaction.",
     image: "/jaspr.png",
     technologies: ["React", "TypeScript", "AI APIs", "NLP"],
     achievement: "🥇 1st Place - Morro Makers Hackathon",
+    whatIdid: "Developed the front-end of the onboarding flow for hotel registration on the platform.",
   },
   {
     id: "cria",
@@ -17,6 +18,7 @@ export const projects: ProjectData[] = [
     link: "https://github.com/ThaisFReis",
     technologies: ["n8n", "Google Gemini API", "SerpAPI", "React", "TypeScript", "Tailwind CSS"],
     achievement: "🥈 2nd Place - LiveMode Hackathon",
+    whatIdid: "Developed all the tech stack for the project",
   },
   {
     id: "gaba-bank",
@@ -26,6 +28,7 @@ export const projects: ProjectData[] = [
     technologies: ["React", "Solidity", "Web3", "DeFi", "Smart Contracts"],
     achievement: "🌐 Meridian Web3 Hackathon",
     link: "https://gaba-bank.vercel.app/",
+    whatIdid: "Developed the front-end.",
   },
   {
     id: "sentinela",
@@ -35,6 +38,7 @@ export const projects: ProjectData[] = [
     technologies: ["React", "TypeScript", "Node.js", "Express", "LangChain", "Tailwind CSS", "Vite", "Jest"],
     achievement: "🤖 Bemobi Hackathon",
     link: "https://github.com/ThaisFReis/sentinela.git",
+    whatIdid: "Developed all the tech stack for the project"
   },
   {
     id: "eventhorizon",
@@ -60,5 +64,6 @@ export const projects: ProjectData[] = [
     ],
     link: "https://tickets-jue9.vercel.app/",
     achievement: "💻 Web3",
+    whatIdid: "Developed all the tech stack for the project"
   },
 ];
