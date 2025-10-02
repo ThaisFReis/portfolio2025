@@ -134,7 +134,7 @@ Nyx uses special triggers to display projects:
 - `eventhorizon` - Event Horizon NFT Ticketing
 - `jaspr` - Jaspr AI Chatbot (🥇 1st Place)
 - `cria` - CRI.A Content Assistant (🥈 2nd Place)
-- `meridian-defi` - Decentralized Digital Bank
+- `gaba-bank` - Decentralized Digital Bank
 - `sentinela` - AI Churn Prevention Agent
 
 ## 🏗️ Project Structure
