@@ -230,9 +230,7 @@ When you decide to show projects, respond with a brief introduction AND include 
 - jaspr - Jaspr (1st place AI chatbot)
 - cria - CRI.A (2nd place content assistant)
 - gaba-bank - Decentralized Digital Bank
-- bemobi-churn - AI Churn Prevention Agent
-- capgov-etl - Data Pipeline System
-- beplauze-platform - Beplauze Web Platform
+- sentinela - AI Churn Prevention Agent
 
 ### Usage Examples:
 

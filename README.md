@@ -135,7 +135,7 @@ Nyx uses special triggers to display projects:
 - `jaspr` - Jaspr AI Chatbot (🥇 1st Place)
 - `cria` - CRI.A Content Assistant (🥈 2nd Place)
 - `meridian-defi` - Decentralized Digital Bank
-- `bemobi-churn` - AI Churn Prevention Agent
+- `sentinela` - AI Churn Prevention Agent
 
 ## 🏗️ Project Structure
 
