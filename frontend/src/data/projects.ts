@@ -58,20 +58,4 @@ export const projects: ProjectData[] = [
     technologies: ["React", "AI/ML", "Data Analytics", "TypeScript"],
     achievement: "🤖 Bemobi Hackathon",
   },
-  {
-    id: "capgov-etl",
-    title: "Data Pipeline System",
-    description: "Enterprise ETL solution developed at CAPGov. Handles complex data transformations and workflow optimizations with Docker containerization.",
-    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&auto=format&fit=crop",
-    technologies: ["Docker", "Talend", "PostgreSQL", "ETL", "Python"],
-    achievement: "💼 CAPGov Research Project",
-  },
-  {
-    id: "beplauze-platform",
-    title: "Beplauze Web Platform",
-    description: "Modern web application with focus on performance optimization and elegant UI/UX. Built with React and TypeScript in an Agile environment.",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop",
-    technologies: ["React", "TypeScript", "UI/UX", "Agile", "Performance"],
-    achievement: "💼 Beplauze Internship",
-  },
 ];

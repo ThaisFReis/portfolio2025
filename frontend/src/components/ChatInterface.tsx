@@ -3,6 +3,7 @@ import { ChatHeader } from "./chat/ChatHeader";
 import { ChatMessage } from "./chat/ChatMessage";
 import { TypingIndicator } from "./chat/TypingIndicator";
 import { ChatInput } from "./chat/ChatInput";
+import { Footer } from "./chat/Footer";
 import { useChatLogic } from "../hooks/useChatLogic";
 
 export const ChatInterface = () => {
@@ -55,6 +56,9 @@ export const ChatInterface = () => {
           onKeyDown={handleKeyDown}
           inputRef={inputRef}
         />
+
+        {/* Footer */}
+        <Footer />
       </div>
     </>
   );

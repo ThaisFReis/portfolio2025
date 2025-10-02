@@ -1,7 +1,7 @@
 import { NyxAvatar } from "./NyxAvatar";
 import type { ChatHeaderProps } from "../../types/chat";
 
-export const ChatHeader: React.FC<ChatHeaderProps> = ({ nyxState, currentMessage }) => {
+export const ChatHeader = ({ nyxState, currentMessage }: ChatHeaderProps) => {
   return (
     <header className="p-6 flex items-center justify-between border-b border-[#9e78ff]/10">
       <div className="flex items-center gap-4">

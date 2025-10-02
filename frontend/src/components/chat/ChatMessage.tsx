@@ -2,7 +2,7 @@ import { Copy } from "lucide-react";
 import type { ChatMessageProps } from "../../types/chat";
 import { ProjectCarousel } from "./ProjectCarousel";
 
-export const ChatMessage: React.FC<ChatMessageProps> = ({ message }) => {
+export const ChatMessage = ({ message }: ChatMessageProps) => {
   const handleCopyMessage = () => {
     navigator.clipboard.writeText(message.text);
     // TODO: Add visual feedback on copy if needed

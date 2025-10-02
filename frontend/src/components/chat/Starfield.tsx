@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import type { StarfieldProps } from "../../types/chat";
 
-export const Starfield: React.FC<StarfieldProps> = ({ className = "" }) => {
+export const Starfield = ({ className = "" }: StarfieldProps) => {
   useEffect(() => {
     const container = document.getElementById("enhanced-starfield");
     if (!container) return;

@@ -1,6 +1,6 @@
 import type { NyxAvatarProps } from "../../types/chat";
 
-export const NyxAvatar: React.FC<NyxAvatarProps> = ({ state }) => {
+export const NyxAvatar = ({ state }: NyxAvatarProps) => {
   return (
     <div className={`nyx-avatar ${state}`} role="img" aria-label="Nyx Avatar">
       <svg

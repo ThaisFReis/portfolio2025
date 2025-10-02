@@ -1,15 +1,15 @@
 import { Send } from "lucide-react";
 import type { ChatInputProps } from "../../types/chat";
 
-export const ChatInput: React.FC<ChatInputProps> = ({
+export const ChatInput = ({
   inputValue,
   isLoading,
   isTyping,
   onInputChange,
   onSubmit,
   onKeyDown,
-  inputRef
-}) => {
+  inputRef,
+}: ChatInputProps) => {
   const updateCharCounter = () => {
     return `${inputValue.length}/500`;
   };
@@ -49,8 +49,7 @@ export const ChatInput: React.FC<ChatInputProps> = ({
 
         {/* Keyboard Shortcuts Hint */}
         <div className="mt-2 text-xs text-gray-500 font-mono text-center">
-          Press <kbd className="bg-gray-700 px-1 rounded">Enter</kbd> to
-          send
+          Press <kbd className="bg-gray-700 px-1 rounded">Enter</kbd> to send
         </div>
       </form>
     </footer>

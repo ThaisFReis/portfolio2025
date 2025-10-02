@@ -4,12 +4,11 @@ import type { ProjectData } from "../../types/chat";
 
 interface ProjectCarouselProps {
   projects: ProjectData[];
+  initialIndex?: number; // Optional: which project to show first (defaults to 0)
 }
 
-export const ProjectCarousel: React.FC<ProjectCarouselProps> = ({
-  projects,
-}) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+export const ProjectCarousel = ({ projects, initialIndex = 0 }: ProjectCarouselProps) => {
+  const [currentIndex, setCurrentIndex] = useState(initialIndex);
   const touchStartX = useRef<number>(0);
   const touchEndX = useRef<number>(0);
 
