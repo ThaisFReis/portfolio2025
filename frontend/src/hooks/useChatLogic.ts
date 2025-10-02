@@ -229,7 +229,7 @@ When you decide to show projects, respond with a brief introduction AND include 
 - eventhorizon - Event Horizon (NFT ticketing platform)
 - jaspr - Jaspr (1st place AI chatbot)
 - cria - CRI.A (2nd place content assistant)
-- meridian-defi - Decentralized Digital Bank
+- gaba-bank - Decentralized Digital Bank
 - bemobi-churn - AI Churn Prevention Agent
 - capgov-etl - Data Pipeline System
 - beplauze-platform - Beplauze Web Platform

@@ -23,7 +23,8 @@ export const projects: ProjectData[] = [
       "Vitest",
       "React Testing Library"
     ],
-    link: "https://tickets-jue9.vercel.app/"
+    link: "https://tickets-jue9.vercel.app/",
+    achievement: "Web3",
   },
   {
     id: "jaspr",
@@ -43,17 +44,18 @@ export const projects: ProjectData[] = [
     achievement: "🥈 2nd Place - LiveMode Hackathon",
   },
   {
-    id: "meridian-defi",
-    title: "Decentralized Digital Bank",
-    description: "DeFi platform built for Meridian Hackathon. Features smart contracts for decentralized banking operations and financial services.",
-    image: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=800&auto=format&fit=crop",
+    id: "gaba-bank",
+    title: "Gaba Bank",
+    description: "DeFi platform built for Meridian Hackathon. Features smart contracts for decentralized banking operations and financial services. (Mock demonstration)",
+    image: "/gaba-bank.png",
     technologies: ["React", "Solidity", "Web3", "DeFi", "Smart Contracts"],
     achievement: "🌐 Meridian Web3 Hackathon",
+    link: "https://gaba-bank.vercel.app/",
   },
   {
     id: "bemobi-churn",
     title: "AI Churn Prevention Agent",
-    description: "Intelligent agent leveraging AI to predict and prevent customer churn. Analyzes user behavior patterns and provides proactive interventions.",
+    description: "Intelligent agent leveraging AI to predict and prevent customer churn. Analyzes user behavior patterns and provides proactive interventions. (Mock demonstration)",
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop",
     technologies: ["React", "AI/ML", "Data Analytics", "TypeScript"],
     achievement: "🤖 Bemobi Hackathon",
