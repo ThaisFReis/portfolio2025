@@ -66,4 +66,23 @@ export const projects: ProjectData[] = [
     achievement: "💻 Web3",
     whatIdid: "Developed all the tech stack for the project"
   },
+  {
+    id: "brokk-pools",
+    title: "Brokk Pools",
+    description: "Full-stack DeFi analytics platform for monitoring liquidity pools and tracking user positions in decentralized finance ecosystems. Provides real-time data processing and visualization for DeFi investors.",
+    image: "/brokk.png",
+    technologies: ["TypeScript", "Node.js", "React", "PostgreSQL", "Docker"],
+    achievement: "💻 DeFi Analytics",
+    whatIdid: "Developed the full-stack application including backend API, database design, and frontend visualization."
+  },
+  {
+    id: "mise",
+    title: "Mise",
+    description: "Comprehensive full-stack restaurant analytics platform with AI-powered insights. Features customizable dashboards, visual query builder, and financial analysis for the food service industry.",
+    image: "/mise.png",
+    technologies: ["Node.js", "TypeScript", "Prisma", "PostgreSQL", "Redis", "Docker", "DeepSeek AI", "Next.js", "React", "Tailwind CSS"],
+    achievement: "💻 Enterprise Analytics",
+    whatIdid: "Developed the complete full-stack platform including backend architecture, database design, AI integration, and modern frontend with Next.js.",
+    link: "https://frontend-seven-psi-66.vercel.app/"
+  },
 ];
