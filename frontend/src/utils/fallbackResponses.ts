@@ -1,4 +1,4 @@
-// Fallback responses for when Gemini API is not available
+// Fallback responses for when the AI API is not available
 export const fallbackResponses: Record<string, string | string[]> = {
   // Skills and technologies
   'react': 'Ah, React! Thais é especialista nessa lib. Ela domina React 18+, hooks, context, e já construiu mais de 20 projetos com essa tecnologia durante o bootcamp da Driven Education.',

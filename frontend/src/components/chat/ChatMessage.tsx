@@ -32,7 +32,7 @@ export const ChatMessage = ({ message }: ChatMessageProps) => {
         {children}
       </a>
     ),
-    code: ({ node, className, children, ...props }) => {
+    code: ({ className, children, ...props }) => {
       const isInline = !className?.includes('language-');
       return isInline ? (
         <code className="bg-purple-900/30 text-purple-300 px-1.5 py-0.5 rounded font-mono text-xs" {...props}>

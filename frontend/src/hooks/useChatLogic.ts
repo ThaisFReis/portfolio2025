@@ -1,8 +1,8 @@
 import { useState, useRef, useEffect } from "react";
 import type { Message, NyxState } from "../types/chat";
 import { getFallbackResponse } from "../utils/fallbackResponses";
-import { projects } from "../data/projects";
 import SYSTEM_PROMPT from "../data/systemPrompt";
+import { parseProjectTrigger } from "../utils/projectTriggers";
 
 export const useChatLogic = () => {
   // ============================
@@ -69,27 +69,8 @@ export const useChatLogic = () => {
     setNyxState("speaking");
     setCurrentMessage("Revealing ancient wisdom...");
 
-    // Check if response contains special project trigger to show carousel
-    // Supports: [SHOW_PROJECTS] or [SHOW_PROJECTS:jaspr,cria,eventhorizon]
-    const projectTriggerRegex = /\[SHOW_PROJECTS(?::([a-z0-9,-]+))?\]/i;
-    const projectMatch = text.match(projectTriggerRegex);
-    const hasProjectTrigger = projectMatch !== null;
-
-    // Extract project IDs if specified
-    let filteredProjects = projects;
-    if (hasProjectTrigger && projectMatch[1]) {
-      const requestedIds = projectMatch[1].split(',').map(id => id.trim());
-      filteredProjects = projects.filter(project =>
-        requestedIds.includes(project.id)
-      );
-      // Fallback to all projects if no matches found
-      if (filteredProjects.length === 0) {
-        filteredProjects = projects;
-      }
-    }
-
-    // Remove the trigger from displayed text (it's a command, not visible content)
-    const cleanText = text.replace(projectTriggerRegex, "").trim();
+    const { cleanText, hasProjectTrigger, filteredProjects } =
+      parseProjectTrigger(text);
 
     let displayedText = "";
     const newMessageId = Date.now().toString();
@@ -174,22 +155,7 @@ export const useChatLogic = () => {
     setIsTyping(true);
     setNyxStateWithMessage("thinking", "Parsing dimensional query...");
 
-    // Get API key from environment variables
-    const DEEPSEEK_API_KEY = import.meta.env.VITE_DEEPSEEK_API_KEY;
-
-    // Validate API key is configured
-    if (
-      !DEEPSEEK_API_KEY ||
-      DEEPSEEK_API_KEY === "your_deepseek_api_key_here"
-    ) {
-      setIsTyping(false);
-      streamBotMessage(
-        "ERRO: Chave de acesso ao mainframe não configurada. Configure VITE_DEEPSEEK_API_KEY no arquivo .env para ativar a IA."
-      );
-      return;
-    }
-
-    const DEEPSEEK_API_URL = "https://api.deepseek.com/v1/chat/completions";
+    const chatApiUrl = import.meta.env.VITE_CHAT_API_URL || "/api/chat";
 
     let responseText = "Erro de conexão com o mainframe. Tente novamente.";
 
@@ -219,14 +185,12 @@ export const useChatLogic = () => {
           },
         ];
 
-        response = await fetch(DEEPSEEK_API_URL, {
+        response = await fetch(chatApiUrl, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${DEEPSEEK_API_KEY}`,
           },
           body: JSON.stringify({
-            model: "deepseek-chat",
             messages: messages,
             temperature: 0.9, // High temperature for creative, varied responses
             max_tokens: 2048, // Maximum response length
@@ -258,15 +222,10 @@ export const useChatLogic = () => {
       }
 
       const result = await response.json();
-      console.log("API Response:", result);
-
-      // Extract response text from API result
-      if (result.choices?.[0]?.message?.content) {
-        responseText = result.choices[0].message.content;
-      } else if (result.error) {
-        responseText = `Erro do mainframe: ${
-          result.error.message || "Erro desconhecido"
-        }`;
+      if (result?.content) {
+        responseText = result.content;
+      } else if (result?.error?.message) {
+        responseText = `Erro do mainframe: ${result.error.message}`;
       } else {
         responseText =
           "Recebi dados corrompidos do mainframe. Não consigo processar sua solicitação.";

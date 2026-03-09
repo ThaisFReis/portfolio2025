@@ -59,15 +59,15 @@ An immersive, AI-driven portfolio experience featuring **Nyx**, an intelligent c
 ```bash
 Node.js 18+
 npm, yarn, or pnpm
-DeepSeek API key
+DeepSeek API key (server-side)
 ```
 
 ### Installation
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/ThaisFReis/poc-portfolio.git
-   cd poc-portfolio
+   git clone https://github.com/ThaisFReis/portfolio2025.git
+   cd portfolio2025
    ```
 
 2. **Install dependencies**
@@ -80,7 +80,8 @@ DeepSeek API key
 
    Create a `.env` file in the `frontend` directory:
    ```env
-   VITE_DEEPSEEK_API_KEY=your_deepseek_api_key_here
+   DEEPSEEK_API_KEY=your_deepseek_api_key_here
+   VITE_CHAT_API_URL=/api/chat
    ```
 
    Get your API key from [DeepSeek Platform](https://platform.deepseek.com/)
@@ -140,7 +141,7 @@ Nyx uses special triggers to display projects:
 ## 🏗️ Project Structure
 
 ```
-poc-portfolio/
+portfolio2025/
 ├── frontend/
 │   ├── src/
 │   │   ├── components/
@@ -214,7 +215,14 @@ npm run preview      # Preview production build locally
 
 | Variable | Description | Required | Example |
 |----------|-------------|----------|---------|
-| `VITE_DEEPSEEK_API_KEY` | DeepSeek API authentication key | ✅ Yes | `sk-abc123...` |
+| `DEEPSEEK_API_KEY` | DeepSeek API key used by server route `/api/chat` | ✅ Yes | `sk-abc123...` |
+| `VITE_CHAT_API_URL` | Frontend chat endpoint override | ❌ No | `/api/chat` |
+
+### Security Notes
+
+- Never commit real secrets in `.env` files.
+- Keep DeepSeek keys server-side only (Vercel environment variables).
+- The frontend should call `/api/chat`, not DeepSeek directly.
 
 ### Adding New Projects
 
@@ -233,7 +241,7 @@ Edit `frontend/src/data/projects.ts`:
 }
 ```
 
-Then update the system prompt in `useChatLogic.ts` to include the new project ID.
+Then update the system prompt in `frontend/src/data/systemPrompt.ts` to include the new project ID.
 
 ## 🎯 Customization Guide
 
