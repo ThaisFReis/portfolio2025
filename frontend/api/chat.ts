@@ -84,7 +84,7 @@ export default async function handler(req: ReqLike, res: ResLike) {
   }
 
   try {
-    const upstream = await fetch("https://api.deepseek.com/v1/chat/completions", {
+    const upstream = await fetch("https://api.deepseek.com/chat/completions", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -111,6 +111,8 @@ export default async function handler(req: ReqLike, res: ResLike) {
           typeof payload.error.message === "string" &&
           payload.error.message) ||
         `Upstream request failed with status ${upstream.status}.`;
+        
+      console.error("DEEPSEEK API ERROR:", upstream.status, message, payload);
 
       return sendError(res, upstream.status, "UPSTREAM_ERROR", message);
     }
@@ -140,7 +142,8 @@ export default async function handler(req: ReqLike, res: ResLike) {
       provider: "deepseek",
       model: "deepseek-chat",
     });
-  } catch {
+  } catch (err) {
+    console.error("API ROUTE EXCEPTION:", err);
     return sendError(res, 502, "UPSTREAM_ERROR", "Failed to reach upstream AI provider.");
   }
 }

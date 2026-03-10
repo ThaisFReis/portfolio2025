@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import { ChevronLeft, ChevronRight, ExternalLink, Github } from "lucide-react";
+import { CaretLeft, CaretRight, ArrowSquareOut, GithubLogo } from "@phosphor-icons/react";
 import type { ProjectData } from "../../types/chat";
 
 interface ProjectCarouselProps {
@@ -119,7 +119,7 @@ export const ProjectCarousel = ({ projects, initialIndex = 0 }: ProjectCarouselP
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 px-4 py-2 bg-purple-600/20 hover:bg-purple-600/30 border border-purple-500/50 rounded text-sm text-purple-300 font-mono transition-all duration-200 hover:shadow-lg hover:shadow-purple-500/20"
               >
-                <ExternalLink className="w-4 h-4" />
+                <ArrowSquareOut className="w-4 h-4" />
                 View Project
               </a>
             )}
@@ -130,7 +130,7 @@ export const ProjectCarousel = ({ projects, initialIndex = 0 }: ProjectCarouselP
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 px-4 py-2 bg-black/30 hover:bg-black/50 border border-gray-600/50 rounded text-sm text-gray-300 font-mono transition-all duration-200"
               >
-                <Github className="w-4 h-4" />
+                <GithubLogo className="w-4 h-4" />
                 GitHub
               </a>
             )}
@@ -145,14 +145,14 @@ export const ProjectCarousel = ({ projects, initialIndex = 0 }: ProjectCarouselP
               className="absolute left-2 top-1/2 -translate-y-1/2 p-2 bg-black/60 hover:bg-black/80 backdrop-blur-sm border border-purple-500/30 rounded-full transition-all duration-200 hover:scale-110"
               aria-label="Previous project"
             >
-              <ChevronLeft className="w-5 h-5 text-purple-300" />
+              <CaretLeft className="w-5 h-5 text-purple-300" />
             </button>
             <button
               onClick={nextProject}
               className="absolute right-2 top-1/2 -translate-y-1/2 p-2 bg-black/60 hover:bg-black/80 backdrop-blur-sm border border-purple-500/30 rounded-full transition-all duration-200 hover:scale-110"
               aria-label="Next project"
             >
-              <ChevronRight className="w-5 h-5 text-purple-300" />
+              <CaretRight className="w-5 h-5 text-purple-300" />
             </button>
           </>
         )}

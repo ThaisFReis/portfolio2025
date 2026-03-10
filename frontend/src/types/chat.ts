@@ -19,7 +19,7 @@ export interface Message {
   projects?: ProjectData[];
 }
 
-export type NyxState = "idle" | "thinking" | "speaking";
+export type NyxState = "idle" | "thinking" | "speaking" | "angry";
 
 export interface NyxAvatarProps {
   state: NyxState;

@@ -1,4 +1,4 @@
-import { Heart } from "lucide-react";
+import { Heart } from "@phosphor-icons/react";
 
 export const Footer = () => {
   return (
@@ -6,7 +6,7 @@ export const Footer = () => {
       <div className="max-w-4xl mx-auto text-center">
         <p className="text-sm text-gray-400 font-mono flex items-center justify-center gap-2">
           Developed with{" "}
-          <Heart className="w-4 h-4 text-purple-400 fill-purple-400 animate-pulse" />{" "}
+          <Heart weight="fill" className="w-4 h-4 text-purple-400 animate-pulse" />{" "}
           by{" "}
           <a
             href="https://github.com/ThaisFReis"

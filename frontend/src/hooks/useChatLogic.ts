@@ -1,8 +1,14 @@
 import { useState, useRef, useEffect } from "react";
 import type { Message, NyxState } from "../types/chat";
 import { getFallbackResponse } from "../utils/fallbackResponses";
-import SYSTEM_PROMPT from "../data/systemPrompt";
+import { buildAugmentedPrompt } from "../utils/promptBuilder";
 import { parseProjectTrigger } from "../utils/projectTriggers";
+
+// Helper to detect disrespectful or highly personal queries
+const isHostileQuery = (query: string) => {
+  const hostileRegex = /(foda-se|merda|porra|caralho|puta|imbecil|idiota|burra|estúpida|vsf|quem você pensa que é|idade|namorado|onde você mora|fuck|shit|bitch|stupid|idiot|dumb)/i;
+  return hostileRegex.test(query);
+};
 
 export const useChatLogic = () => {
   // ============================
@@ -151,9 +157,9 @@ export const useChatLogic = () => {
    *
    * @param prompt - The user's current message/question
    */
-  const callDeepSeekAPI = async (prompt: string) => {
+  const callDeepSeekAPI = async (prompt: string, isHostile: boolean = false) => {
     setIsTyping(true);
-    setNyxStateWithMessage("thinking", "Parsing dimensional query...");
+    setNyxStateWithMessage(isHostile ? "angry" : "thinking", isHostile ? "INTRUDER DETECTED. ANALYZING THREAT LEVEL..." : "Parsing dimensional query...");
 
     const chatApiUrl = import.meta.env.VITE_CHAT_API_URL || "/api/chat";
 
@@ -170,19 +176,17 @@ export const useChatLogic = () => {
       let delay = 1000; // Initial delay: 1 second
 
       while (retries < maxRetries) {
-        // Build messages array: system prompt + conversation history + current prompt
+        // Build augmented system prompt: behavioral rules + RAG-retrieved knowledge chunks
+        const augmentedPrompt = buildAugmentedPrompt(prompt);
+
+        // Build messages array: augmented system prompt + conversation history
         const messages = [
           {
             role: "system",
-            content: SYSTEM_PROMPT,
+            content: augmentedPrompt,
           },
-          // Include conversation history for context
+          // Include conversation history for context (already contains current user message)
           ...conversationHistoryRef.current,
-          // Add current user message
-          {
-            role: "user",
-            content: prompt,
-          },
         ];
 
         response = await fetch(chatApiUrl, {
@@ -295,8 +299,11 @@ export const useChatLogic = () => {
         content: userInput,
       });
 
+      // Detect hostility to optionally trigger the angry state beforehand
+      const hostile = isHostileQuery(userInput);
+
       // Call AI with the user's message
-      callDeepSeekAPI(userInput);
+      callDeepSeekAPI(userInput, hostile);
 
       // Clear input field
       setInputValue("");

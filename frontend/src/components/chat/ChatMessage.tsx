@@ -1,15 +1,29 @@
-import { Copy } from "lucide-react";
+import { Copy } from "@phosphor-icons/react";
 import type { ChatMessageProps } from "../../types/chat";
 import { ProjectCarousel } from "./ProjectCarousel";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import type { Components } from "react-markdown";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
 
 export const ChatMessage = ({ message }: ChatMessageProps) => {
   const handleCopyMessage = () => {
     navigator.clipboard.writeText(message.text);
     // TODO: Add visual feedback on copy if needed
   };
+
+  const messageRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (messageRef.current) {
+      gsap.fromTo(
+        messageRef.current,
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }
+      );
+    }
+  }, []);
 
   // Custom components for markdown rendering
   const markdownComponents: Components = {
@@ -77,7 +91,7 @@ export const ChatMessage = ({ message }: ChatMessageProps) => {
 
   if (message.sender === "user") {
     return (
-      <div className="message-wrapper flex justify-end message-user">
+      <div ref={messageRef} className="message-wrapper flex justify-end message-user">
         <div className="bg-indigo-900/50 rounded-lg rounded-br-none p-3 max-w-lg">
           <p className="text-sm text-white leading-relaxed font-mono">
             {message.text}
@@ -90,7 +104,7 @@ export const ChatMessage = ({ message }: ChatMessageProps) => {
   // Bot message with project carousel
   if (message.type === "project-carousel" && message.projects) {
     return (
-      <div className="message-wrapper flex flex-col justify-start message-nyx w-full">
+      <div ref={messageRef} className="message-wrapper flex flex-col justify-start message-nyx w-full">
         {/* Project Carousel */}
         <ProjectCarousel projects={message.projects} />
       </div>
@@ -99,7 +113,7 @@ export const ChatMessage = ({ message }: ChatMessageProps) => {
 
   // Regular bot message
   return (
-    <div className="message-wrapper flex justify-start message-nyx relative group">
+    <div ref={messageRef} className="message-wrapper flex justify-start message-nyx relative group">
       <div className="bg-black/30 rounded-lg rounded-bl-none p-3 max-w-lg">
         <div className="text-gray-100 font-mono markdown-content">
           <ReactMarkdown

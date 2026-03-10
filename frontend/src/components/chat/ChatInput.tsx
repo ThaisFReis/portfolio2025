@@ -1,5 +1,7 @@
-import { Send } from "lucide-react";
+import { PaperPlaneRight } from "@phosphor-icons/react";
 import type { ChatInputProps } from "../../types/chat";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
 
 export const ChatInput = ({
   inputValue,
@@ -14,10 +16,22 @@ export const ChatInput = ({
     return `${inputValue.length}/500`;
   };
 
+  const footerRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    if (footerRef.current) {
+      gsap.fromTo(
+        footerRef.current,
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.5, ease: "power2.out", delay: 0.6 }
+      );
+    }
+  }, []);
+
   return (
-    <footer className="p-6 border-t border-[#9e78ff]/10">
+    <footer ref={footerRef} className="p-6 border-t border-[#9e78ff]/10">
       <form onSubmit={onSubmit}>
-        <div className="flex items-center gap-3 bg-black/40 rounded-xl p-3 border border-white/0 hover:border-[#9e78ff]/30 transition-all duration-300">
+        <div className="flex items-center gap-3 bg-black/60 rounded-xl p-3 border border-[#9e78ff]/20 hover:border-[#9e78ff]/50 focus-within:border-cyan-400/50 focus-within:shadow-[0_0_20px_rgba(34,211,238,0.2)] transition-all duration-300">
           <input
             ref={inputRef}
             type="text"
@@ -42,7 +56,7 @@ export const ChatInput = ({
               disabled={isLoading || isTyping || !inputValue.trim()}
               aria-label="Send message"
             >
-              <Send className="w-5 h-5" />
+              <PaperPlaneRight className="w-5 h-5" />
             </button>
           </div>
         </div>

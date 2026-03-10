@@ -2,13 +2,53 @@ import type { ProjectData } from "../types/chat";
 
 export const projects: ProjectData[] = [
   {
+    id: "karn-protocol",
+    title: "Karn Protocol",
+    description: "Open-source blockchain governance ecosystem on Stellar/Soroban. Features 3 smart contracts in Rust (Valocracy, Governor, Treasury) implementing meritocratic governance with soulbound tokens and contribution-based reputation (Mana).",
+    image: "/karn.png",
+    link: "https://github.com/ThaisFReis/karn-protocol",
+    technologies: ["Rust", "Soroban", "Stellar SDK", "TypeScript SDK", "Node.js", "PostgreSQL", "Prisma", "Supabase", "React", "Docker"],
+    achievement: "🔗 Founder & Sole Contributor",
+    whatIdid: "Founded and built the entire ecosystem: 3 Soroban smart contracts in Rust, TypeScript SDK (@karn_lat/protocol-sdk), full-stack backend with AES-256-GCM encryption.",
+  },
+  {
+    id: "proof-of-life",
+    title: "Proof of Life",
+    description: "Asymmetric thriller game for 2 players on Stellar blockchain. Uses Zero-Knowledge Proofs (UltraHonk) to validate the assassin's hidden position on-chain without revealing coordinates.",
+    image: "/proof-of-life.png",
+    link: "https://github.com/ThaisFReis/Proof-of-Life",
+    technologies: ["Rust", "Soroban", "Stellar", "Zero-Knowledge Proofs", "UltraHonk"],
+    achievement: "🎮 Game Zk Stellar Hackathon",
+    whatIdid: "Developed the full game including ZK proof implementation and Soroban smart contracts.",
+  },
+  {
     id: "jaspr",
     title: "Jaspr",
-    description: "Conversational AI chatbot for the hotel industry, designed to reduce operational costs and improve customer satisfaction.",
+    description: "Multi-tenant AI concierge ecosystem for hospitality. Uses RAG (LangChain + ChromaDB + OpenAI GPT-4o-mini) for knowledge-grounded responses, NestJS backend with WebSocket real-time communication, and automated scraping for hotel knowledge base creation.",
     image: "/jaspr.png",
-    technologies: ["React", "TypeScript", "AI APIs", "NLP"],
+    technologies: ["React", "TypeScript", "NestJS", "LangChain", "ChromaDB", "OpenAI API", "PostgreSQL", "TypeORM", "WebSockets"],
     achievement: "🥇 1st Place - Morro Makers Hackathon",
-    whatIdid: "Developed the front-end of the onboarding flow for hotel registration on the platform.",
+    whatIdid: "Developed the front-end, onboarding flow, and AI integration with RAG architecture.",
+  },
+  {
+    id: "mise",
+    title: "Mise",
+    description: "Comprehensive full-stack restaurant analytics platform with AI-powered insights. Features customizable dashboards, channel analysis (delivery vs. dine-in), product performance, multi-store comparison, and DeepSeek AI for intelligent recommendations based on real data.",
+    image: "/mise.png",
+    technologies: ["Node.js", "TypeScript", "Prisma", "PostgreSQL", "Redis", "Docker", "DeepSeek AI", "Next.js", "React", "Tailwind CSS"],
+    achievement: "🥇 1st Place - Nola Competition",
+    whatIdid: "Developed the complete full-stack platform including backend architecture, database design, AI integration, and modern frontend with Next.js.",
+    link: "https://frontend-seven-psi-66.vercel.app/"
+  },
+  {
+    id: "mintwork",
+    title: "MintWork",
+    description: "Decentralized recruitment protocol that transforms project deliveries into verified microtasks, establishing an immutable on-chain reputation system on Scroll L2.",
+    image: "/mintwork.png",
+    link: "https://taikai.network/br/ethargentina/hackathons/tierra-de-buidlers-2025/projects/cmi67hsbr006mlzqr1zk0j7fs/idea",
+    technologies: ["React", "TypeScript", "Solidity", "Scroll L2", "IPFS", "Smart Contracts"],
+    achievement: "🥈 2nd Place - Ethereum Argentina Hackathon",
+    whatIdid: "Developed the React frontend with Web3 wallet connection, work proof submission, and on-chain reputation management following Clean Architecture.",
   },
   {
     id: "cria",
@@ -19,26 +59,6 @@ export const projects: ProjectData[] = [
     technologies: ["n8n", "Google Gemini API", "SerpAPI", "React", "TypeScript", "Tailwind CSS"],
     achievement: "🥈 2nd Place - LiveMode Hackathon",
     whatIdid: "Developed all the tech stack for the project",
-  },
-  {
-    id: "gaba-bank",
-    title: "Gaba Bank",
-    description: "DeFi platform built for Meridian Hackathon. Features smart contracts for decentralized banking operations and financial services. (Mock demonstration)",
-    image: "/gaba-bank.png",
-    technologies: ["React", "Solidity", "Web3", "DeFi", "Smart Contracts"],
-    achievement: "🌐 Meridian Web3 Hackathon",
-    link: "https://gaba-bank.vercel.app/",
-    whatIdid: "Developed the front-end.",
-  },
-  {
-    id: "sentinela",
-    title: "Sentinela",
-    description: "Autonomous AI agent that reacts in real-time to payment failures, automating recovery through intelligent and empathetic interactions. Features live chat, LangChain integration.",
-    image: "/sentinela.png",
-    technologies: ["React", "TypeScript", "Node.js", "Express", "LangChain", "Tailwind CSS", "Vite", "Jest"],
-    achievement: "🤖 Bemobi Hackathon",
-    link: "https://github.com/ThaisFReis/sentinela.git",
-    whatIdid: "Developed all the tech stack for the project"
   },
   {
     id: "eventhorizon",
@@ -67,6 +87,26 @@ export const projects: ProjectData[] = [
     whatIdid: "Developed all the tech stack for the project"
   },
   {
+    id: "gaba-bank",
+    title: "Gaba Bank",
+    description: "DeFi platform built for Meridian Hackathon. Features smart contracts for decentralized banking operations and financial services. (Mock demonstration)",
+    image: "/gaba-bank.png",
+    technologies: ["React", "Solidity", "Web3", "DeFi", "Smart Contracts"],
+    achievement: "🌐 Meridian Web3 Hackathon",
+    link: "https://gaba-bank.vercel.app/",
+    whatIdid: "Developed the front-end.",
+  },
+  {
+    id: "sentinela",
+    title: "Sentinela",
+    description: "Autonomous AI agent that reacts in real-time to payment failures, automating recovery through intelligent and empathetic interactions. Features live chat, LangChain integration.",
+    image: "/sentinela.png",
+    technologies: ["React", "TypeScript", "Node.js", "Express", "LangChain", "Tailwind CSS", "Vite", "Jest"],
+    achievement: "🤖 Bemobi Hackathon",
+    link: "https://github.com/ThaisFReis/sentinela.git",
+    whatIdid: "Developed all the tech stack for the project"
+  },
+  {
     id: "brokk-pools",
     title: "Brokk Pools",
     description: "Full-stack DeFi analytics platform for monitoring liquidity pools and tracking user positions in decentralized finance ecosystems. Provides real-time data processing and visualization for DeFi investors.",
@@ -74,15 +114,5 @@ export const projects: ProjectData[] = [
     technologies: ["TypeScript", "Node.js", "React", "PostgreSQL", "Docker"],
     achievement: "💻 DeFi Analytics",
     whatIdid: "Developed the full-stack application including backend API, database design, and frontend visualization."
-  },
-  {
-    id: "mise",
-    title: "Mise",
-    description: "Comprehensive full-stack restaurant analytics platform with AI-powered insights. Features customizable dashboards, visual query builder, and financial analysis for the food service industry.",
-    image: "/mise.png",
-    technologies: ["Node.js", "TypeScript", "Prisma", "PostgreSQL", "Redis", "Docker", "DeepSeek AI", "Next.js", "React", "Tailwind CSS"],
-    achievement: "💻 Enterprise Analytics",
-    whatIdid: "Developed the complete full-stack platform including backend architecture, database design, AI integration, and modern frontend with Next.js.",
-    link: "https://frontend-seven-psi-66.vercel.app/"
   },
 ];
